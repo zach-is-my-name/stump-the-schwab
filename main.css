@@ -25,7 +25,7 @@ header {
   width: 500px;
 }
 
-.welcome-box {
+.js-question-box {
   margin: auto;
   width: 650px;
   height: 400px;
@@ -44,4 +44,8 @@ header {
 
 .hide {
   display: none;
+}
+
+input[type="radio"] {
+  vertical-align: middle;
 }

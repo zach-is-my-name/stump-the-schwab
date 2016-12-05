@@ -20,18 +20,23 @@ $(document).ready(function() {
     var questionNumber = question.number;
     var answer =  question.answer;
     // console.log(question);
-    var html = '<form> <h2>' + title + '</h2>' + multipleChoices.forEach(function(choice) {
-      console.log(choice);
-      return '<input type="radio" name="question-' + questionNumber + '" value="' + choice + '"><label for="' + choice + '">' + choice + '</label> <br />';
+    var html = '<form> <h2>' + title + '</h2>' + multipleChoices.map(function(choice) {
+      return '<input type="radio" name="question-' + questionNumber + '" value="' + choice + '">' + choice + '<br />'
     });
     html += '<button class="js-submit-answer">Submit</button> </form>';
     console.log(html);
     $('.js-question-box').html(html);
   }
 
+  $('div').on('click', '.start', function(event) {
+    event.preventDefault();
+    renderHTML(state, 1);
+
+  } )
 
 
-  renderHTML(state, '1');
+
+  // renderHTML(state, '1');
 
 
 })
