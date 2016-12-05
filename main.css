@@ -1,10 +1,47 @@
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+span {
+  text-align: center;
+}
+p {
+  text-align: center;
+}
+
 header {
+  margin-bottom: 80px;
   background-color: blue;
   width: 100%;
 }
 
 .container {
-  margin-top: 50px;
-  width: 50%;
+  padding: 25px;
   margin: 0 auto;
+  width: 500px;
+}
+
+.welcome-box {
+  margin: auto;
+  width: 650px;
+  height: 400px;
+  padding: 30px;
+  background-color: #ccc;
+}
+
+.button {
+  border-radius: 5px;
+  background-color: #3d8af7;
+}
+
+.start {
+  margin: auto;
+}
+
+.hide {
+  display: none;
 }
