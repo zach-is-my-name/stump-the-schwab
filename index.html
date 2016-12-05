@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Stump the Schwab</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header></header>
+        <h1>Stump the Schwab</h1>
+        <p>
+            Are you a sports guru? Can you beat the Schwab?
+        </p>
+        <div id='js-start-button'>
+            <button class='all-buttons'>Start</button>
+        </div>
+
+        <div class="question">
+            <p>
+                Score: 2/3 correct
+            </p>
+            <p>
+                Question 1 out of 5
+            </p>
+
+            <h2 class='question'>Who won the World Series in 2004?</h2>
+            <form id='question-submit'>
+                <input type="radio" id='answer' value='dodgers'><label for='dodgers'>Los Angeles Dodgers</label>
+                <input type="radio" id='answer' value='red-sox'><label for='red-sox'>Boston Red Sox</label>
+                <input type="radio" id='answer' value='giants'><label for='giants'>San Francisco Giants</label>
+                <input type="radio" id='answer' value='yankees'><label for='yankees'>New York Yankees</label>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
