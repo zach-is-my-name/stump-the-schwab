@@ -21,18 +21,39 @@ $(document).ready(function() {
     var answer =  question.answer;
     // console.log(question);
     var html = '<form> <h2>' + title + '</h2>' + multipleChoices.map(function(choice) {
-      return '<input type="radio" name="question-' + questionNumber + '" value="' + choice + '">' + choice + '<br />'
+      return '<input type="radio" class="user_input" name="question-' + questionNumber + '" value="' + choice + '">' + choice + '<br />'
     });
     html += '<button class="js-submit-answer">Submit</button> </form>';
-    console.log(html);
     $('.js-question-box').html(html);
   }
 
-  $('div').on('click', '.start', function(event) {
-    event.preventDefault();
-    renderHTML(state, 1);
+  function checkAnswer(state, questionNumber, userAnswer) {
+    var question = state.questions[questionNumber];
+    var answer = question.answer;
+    var message = '';
+    if (answer === userAnswer) {
+      // update the score
+      question.runningScore++;
+      message = question.correct_message;
+    } else {
+      message = questions.incorrect_message;
+    }
+    return message;
+  }
 
-  } )
+  $('.js-question-box').on('click', '.js-submit-answer', function(event) {
+    event.preventDefault();
+    console.log($(this).prev());
+    // var userAnswer = $('input[name="question- ' +)
+  })
+
+
+  // on initial page load
+  $('div').on('click', '.start', function(event) {
+    renderHTML(state, 1);
+  });
+
+
 
 
 
