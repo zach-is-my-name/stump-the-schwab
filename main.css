@@ -13,16 +13,26 @@ p {
   text-align: center;
 }
 
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
 header {
   margin-bottom: 80px;
-  background-color: blue;
+  height: 50px;
+  background-color: #3d8af7;
   width: 100%;
 }
 
-.container {
-  padding: 25px;
-  margin: 0 auto;
-  width: 500px;
+.score-info {
+  position: relative;
+  float: left;
+}
+
+.question-info {
+  position: relative;
+  float: right;
 }
 
 .js-question-box {
@@ -32,20 +42,40 @@ header {
   padding: 30px;
   background-color: #ccc;
 }
+#start-button {
+  margin: 0 auto;
+  text-align: center;
+}
 
 .button {
-  border-radius: 5px;
-  background-color: #3d8af7;
+	background-color:#79bbff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 37px;
+	text-decoration:none;
+}
+.button:hover {
+	background-color:#378de5;
+}
+.button:active {
+	position:relative;
+	top:1px;
 }
 
-.start {
-  margin: auto;
-}
+
 
 .hide {
   display: none;
 }
 
-input[type="radio"] {
+/*input[type="radio"] {
   vertical-align: middle;
-}
+}*/
