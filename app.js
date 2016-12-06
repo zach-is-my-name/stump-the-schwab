@@ -28,7 +28,6 @@ $(document).ready(function() {
                 multiple_choice: [150, 213, 370, 186]
             }
         ],
-        user_answer: '',
         runningScore: 0,
         correctMessage: 'Correct!',
         incorrectMessage: 'Incorrect!'
@@ -108,6 +107,13 @@ $(document).ready(function() {
           $('.next').toggleClass('hide');
           renderScore(state);
         }
+    });
+
+    $('.js-question-box').on('click', '.next', function(event) {
+      event.preventDefault();
+      var currentQuestion = $(this).closest('div.js-question-box').find('span').text();
+      currentQuestion++;
+      renderHTML(state, currentQuestion);
     });
 
 })
