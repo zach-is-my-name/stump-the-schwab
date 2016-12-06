@@ -59,7 +59,7 @@ $(document).ready(function() {
         for (var i = 0; i < inputs.length; i++) {
             html += inputs[i];
         }
-        html += '<br /> <div class="buttons"><button class="js-submit-answer button">Submit</button>&nbsp&nbsp \
+        html += '<br /> <div class="buttons"><button class="js-submit-answer button">Submit</button>&nbsp \
                 <button class="next button hide">Next</button> </div>\
                 </form>';
         $('.js-question-box').html(html);
@@ -71,13 +71,21 @@ $(document).ready(function() {
         var message = '';
         if (answer === userAnswer) {
             // update the score
-            state.questions.runningScore++;
-            console.log(state.questions.runningScore);
+            state.runningScore++;
             message = state.correctMessage;
         } else {
             message = state.incorrectMessage;
         }
         return message;
+    }
+
+    function renderScore(state) {
+      var score = state.runningScore;
+      var totalQuestions = state.questions.length;
+      var html = '<div class="score-info"> \
+                    <p> Score: ' + score + '/' + totalQuestions + '</p> \
+                  </div>'
+      $('.score-info').html(html);
     }
 
     $('div').on('click', '.start', function(event) {
@@ -89,10 +97,17 @@ $(document).ready(function() {
         event.stopPropagation();
         var questionNumber = $(this).closest('div.js-question-box').find('span').text();
         var userAnswer = $(this).closest('div.js-question-box').find('input[name="question"]:checked').val();
-        var response = checkAnswer(state, questionNumber, userAnswer);
-        $('.message p').text(response);
-        $('.next').toggleClass('hide');
-
+        if (!userAnswer) {
+          response = 'You must make a selection!';
+          $('.message p').text(response);
+          return false;
+        } else {
+          var response = checkAnswer(state, questionNumber, userAnswer);
+          $('.message p').text(response);
+          $('.js-submit-answer').prop('disabled', true).toggleClass('hide');
+          $('.next').toggleClass('hide');
+          renderScore(state);
+        }
     });
 
 })
