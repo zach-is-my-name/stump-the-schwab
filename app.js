@@ -2,12 +2,12 @@ $(document).ready(function() {
   var state = {
       questions: [
           {
-              questionTitle: 'Who won the World Series in 2004?',
+              questionTitle: 'Who won the MLB World Series in 2004?',
               number: 1,
               answer: 2, // index of the multiple_choice array
-              multiple_choice: ['giants', 'yankees', 'red sox', 'dodgers']
+              multiple_choice: ['Giants', 'Yankees', 'Red Sox', 'Dodgers']
           }, {
-              questionTitle: 'What women\'s tennis player holds the world record for most grandslam championship',
+              questionTitle: 'What women\'s tennis player holds the world record for most grandslam championships?',
               number: 2,
               answer: 0,
               multiple_choice: ['Serena Williams', 'Maria Sharapova', 'Venus Williams', 'Martina Hingis']
@@ -25,7 +25,7 @@ $(document).ready(function() {
               questionTitle: 'What was the highest-scoring game in NBA history?',
               number: 5,
               answer: 2,
-              multiple_choice: [150, 213, 370, 186]
+              multiple_choice: ['150', '213', '370', '186']
           }
       ],
       runningScore: 0,
@@ -82,7 +82,9 @@ $(document).ready(function() {
 
   function checkAnswer(state, questionNumber, userAnswer) {
     var question = state.questions[questionNumber];
-    var answer = question.multiple_choice[question.answer];
+    var answer = question.answer;
+    userAnswer = question.multiple_choice.indexOf(userAnswer);
+    console.log(userAnswer);
     var message = '';
     if (answer === userAnswer) {
         state.runningScore++;
@@ -122,7 +124,7 @@ $(document).ready(function() {
       } else {
         var response = checkAnswer(state, questionNumber, userAnswer);
         $('.message p').text(response);
-        $('.js-submit-answer').prop('disabled', true).toggleClass('hide');
+        $('.js-submit-answer').toggleClass('hide');
         $('.next').toggleClass('hide');
         renderScore(state);
       }
