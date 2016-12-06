@@ -21,13 +21,12 @@ $(document).ready(function() {
                 number: 4,
                 answer: 2,
                 multiple_choice: ['25', '20', '33', '35']
-            },
-              {
-                  questionTitle: 'What was the highest-scoring game in NBA history?',
-                  number: 5,
-                  answer: 2,
-                  multiple_choice: [150, 213, 370, 186]
-              }
+            }, {
+                questionTitle: 'What was the highest-scoring game in NBA history?',
+                number: 5,
+                answer: 2,
+                multiple_choice: [150, 213, 370, 186]
+            }
         ],
         user_answer: '',
         runningScore: 0,
@@ -35,9 +34,9 @@ $(document).ready(function() {
         incorrectMessage: 'Incorrect!'
     }
 
-    function renderHTML(state, question) {
+    function renderHTML(state, questionIndex) {
         var startOver = false;
-        var question = state.questions[question];
+        var question = state.questions[questionIndex];  // state.questions[0] =>
         var multipleChoices = question.multiple_choice;
         var title = question.questionTitle;
         var questionNumber = state.questions.indexOf(question);
@@ -58,9 +57,11 @@ $(document).ready(function() {
                     <form> <h2 class="question-title">' + title + '</h2>'
 
         for (var i = 0; i < inputs.length; i++) {
-          html += inputs[i];
+            html += inputs[i];
         }
-        html += '<br /> <button class="js-submit-answer button">Submit</button></form>';
+        html += '<br /> <div class="buttons"><button class="js-submit-answer button">Submit</button>&nbsp&nbsp \
+                <button class="next button hide">Next</button> </div>\
+                </form>';
         $('.js-question-box').html(html);
     }
 
@@ -70,7 +71,8 @@ $(document).ready(function() {
         var message = '';
         if (answer === userAnswer) {
             // update the score
-            question.runningScore++;
+            state.questions.runningScore++;
+            console.log(state.questions.runningScore);
             message = state.correctMessage;
         } else {
             message = state.incorrectMessage;
@@ -88,8 +90,9 @@ $(document).ready(function() {
         var questionNumber = $(this).closest('div.js-question-box').find('span').text();
         var userAnswer = $(this).closest('div.js-question-box').find('input[name="question"]:checked').val();
         var response = checkAnswer(state, questionNumber, userAnswer);
-        console.log(response);
-    })
+        $('.message p').text(response);
+        $('.next').toggleClass('hide');
 
+    });
 
 })
