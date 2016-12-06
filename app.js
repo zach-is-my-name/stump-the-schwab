@@ -30,20 +30,23 @@ $(document).ready(function() {
       ],
       runningScore: 0,
       correctMessage: 'Correct!',
-      incorrectMessage: 'Incorrect!',
+      incorrectMessage: 'Incorrect :(',
       originalStateHTML: ''
   }
   // let's keep track of the original state to reset later!
-  var originalStateHTML = $('js-question-box').clone();
+  var originalStateHTML = $('.js-question-box').clone();
   state.originalStateHTML = originalStateHTML;
 
-  function renderHTML(state, questionIndex, islastQuestion) {
-    var startOver = false;
+  function renderHTML(state, questionIndex, islastQuestion, startOver) {
     var score = state.runningScore;
     var totalQuestions = state.questions.length;
     var html;
 
-    if (islastQuestion) {
+    if (startOver) {
+      html = state.originalStateHTML;
+      $('.js-question-box').replaceWith(html);
+      return false;
+    } else if (islastQuestion) {
       html = '<div class="js-final-view-box"> \
                 <h2>Overall Score</h2> \
                   <p>You answered ' + score + ' out of ' + totalQuestions + ' correct!</p> \
@@ -84,7 +87,6 @@ $(document).ready(function() {
     var question = state.questions[questionNumber];
     var answer = question.answer;
     userAnswer = question.multiple_choice.indexOf(userAnswer);
-    console.log(userAnswer);
     var message = '';
     if (answer === userAnswer) {
         state.runningScore++;
@@ -138,17 +140,16 @@ $(document).ready(function() {
     var lastQuestionIndex = questionsArray.indexOf(questionsArray[state.questions.length - 1]);
     if (currentQuestion < lastQuestionIndex) {
       currentQuestion++;
-      renderHTML(state, currentQuestion, false);
+      renderHTML(state, currentQuestion, false, false);
     } else {
       currentQuestion = 0;
-      renderHTML(state, currentQuestion, true);
+      renderHTML(state, currentQuestion, true, false);
     }
   });
 
   $('.js-question-box').on('click', '.restart', function(event) {
-    var currentQuestion = 0;
     resetState(state);
-    renderHTML(state, currentQuestion, false);
+    renderHTML(state, 0, false, true);
   });
 
 })

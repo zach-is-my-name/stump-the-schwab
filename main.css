@@ -21,11 +21,19 @@ p {
   margin: 0 auto;
 }
 
-header {
+header, footer{
   margin-bottom: 80px;
   height: 50px;
   background-color: #3d8af7;
   width: 100%;
+}
+
+.logo {
+  background-image: url('img/trophy.png');
+  background-size: cover;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
 }
 
 .score-info {
@@ -52,6 +60,11 @@ header {
   font-size: 32px;
 }
 
+.message p {
+  font-size: 42px;
+  color: white;
+}
+
 #start-button {
   margin: 0 auto;
   text-align: center;
@@ -63,7 +76,7 @@ header {
 }
 
 .button {
-	background-color:#79bbff;
+	background-color:#378de5;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
 	border-radius:6px;
@@ -78,11 +91,21 @@ header {
 	text-decoration:none;
 }
 .button:hover {
-	background-color:#378de5;
+	background-color:#79bbff;
+  79bbff
 }
 .button:active {
 	position:relative;
 	top:1px;
+}
+
+.next {
+  background-color: #92d36e;
+  border:1px solid #92d36e;
+}
+
+.next:hover {
+  background-color: #92d36e;
 }
 
 .hide {
