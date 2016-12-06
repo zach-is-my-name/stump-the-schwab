@@ -52,10 +52,10 @@ $(document).ready(function() {
                       <p> Score: ' + score + '/' + totalQuestions + '</p> \
                     </div> \
                     <div class="question-info">  \
-                      <p> Question ' + questionNumber + ' out of ' + totalQuestions + '</p> \
+                      <p> Question ' + (questionNumber + 1) + ' out of ' + totalQuestions + '</p> \
                       <span style="display:none">' + questionNumber + '</span> \
                     </div> <br /> <br />\
-                    <form> <h2>' + title + '</h2>'
+                    <form> <h2 class="question-title">' + title + '</h2>'
 
         for (var i = 0; i < inputs.length; i++) {
           html += inputs[i];

@@ -1,5 +1,8 @@
 h1 {
   text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 48px;
+  font-style: italic;
 }
 
 h2 {
@@ -40,8 +43,15 @@ header {
   width: 650px;
   height: 400px;
   padding: 30px;
-  background-color: #ccc;
+  border: 1px solid #79bbff;
+  /*background-color: #ccc;*/
 }
+
+.question-title {
+  font-family: Roboto, sans-serif;
+  font-size: 32px;
+}
+
 #start-button {
   margin: 0 auto;
   text-align: center;
@@ -70,12 +80,6 @@ header {
 	top:1px;
 }
 
-
-
 .hide {
   display: none;
 }
-
-/*input[type="radio"] {
-  vertical-align: middle;
-}*/
